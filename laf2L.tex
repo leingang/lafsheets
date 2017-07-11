@@ -1,0 +1,106 @@
+% !TEX TS-program = pdflatex
+%%
+% LAF Grade 2 Medal: Addition and Subtraction up to 18 -- 9 minutes
+%
+%
+
+\documentclass{article}
+\usepackage{ifthen}
+\usepackage{pgf,pgffor}
+\usepackage{tabularx}
+
+
+\newboolean{key}
+\setboolean{key}{true}
+\newcommand{\answer}{
+	\ifthenelse{\boolean{key}}{\textcolor{red}}{\phantom}
+}
+\newcommand{\colfact}[4]{
+\renewcommand{\arraystretch}{1}
+   $\begin{array}{rr}
+      & #2 \\
+   #1 & #3 \\\hline
+      & \answer{#4}
+   \end{array}$
+}
+\newcommand{\rowfact}[4]{
+   $#2#1#3=\answer{#4}$
+}
+
+\newcount\counta
+\newcount\countb
+\newcount\countc
+
+
+\newcommand{\problem}{%
+   \pgfmathsetcount{\countc}{21}
+   \whiledo{\the\countc>18}{
+      \pgfmathsetcount{\counta}{random(0,10)}
+      \pgfmathsetcount{\countb}{random(0,10)}
+      \pgfmathsetcount{\countc}{\counta+\countb}
+   }
+   \pgfmathtruncatemacro{\coinflip}{random(0,1)}
+   \ifnum\coinflip<1
+      \rowfact{+}{\the\counta}{\the\countb}{\the\countc}
+   \else
+      \rowfact{-}{\the\countc}{\the\countb}{\the\counta}
+   \fi   
+}
+
+\newcommand{\maketest}[1][\relax]{
+\Large
+LAF Test 2L --- 5min
+\ifx#1\relax\else
+  \pgfmathsetseed{#1}
+  --- seed #1
+\fi
+
+{\centering\noindent
+\renewcommand{\arraystretch}{1.85}
+\begin{tabularx}{\columnwidth}{*{5}{X}}
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\end{tabularx}}}
+
+\usepackage[letterpaper,
+   top=0.5in, bottom=0.5in, left=0.5in, right=0.5in
+]{geometry}
+\pagestyle{empty}
+
+\begin{document}
+
+% https://www.random.org/integers/?num=10&min=1000&max=9999&col=1&base=10&format=html&rnd=new
+\foreach \x in {2909,
+3000,
+5449,
+4954,
+5975,
+3430,
+4226,
+8455,
+5161,
+7093}{
+   \maketest[\x]
+   \clearpage
+}
+
+
+\end{document}

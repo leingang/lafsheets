@@ -1,0 +1,40 @@
+\documentclass{article}
+\usepackage[letterpaper,left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{pgfmath}
+
+\newcommand{\prob}[3]{\begin{tabular}{r} $#1$ \\ $#2#3$ \\\hline \vphantom{rule{1cm}{1cm}} \end{tabular}}
+%\newcommand{\prob}[3]{#1#2#3}
+\newcommand{\randprob}{%
+
+\pgfmathrandominteger{\a}{0}{10}
+\pgfmathrandominteger{\b}{\a}{10}
+\prob{\b}{-}{\a}}
+
+\pagestyle{empty}
+
+\usepackage{helvet}
+\begin{document}
+\Huge
+\begin{center}
+Timed Test: Subtraction Facts 0--10
+\\[0.5in]
+
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular*}{\textwidth}{*4{c@{\extracolsep{\fill}}}c}
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\end{tabular*}
+
+\begin{tabular*}{\textwidth}{*4{c@{\extracolsep{\fill}}}c}
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\randprob & \randprob & \randprob & \randprob & \randprob  \\
+\end{tabular*}
+
+\end{center}
+\end{document}

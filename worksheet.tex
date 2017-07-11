@@ -1,0 +1,67 @@
+% !TEX TS-program = LuaLaTeX
+%
+% My first luatex document!
+% 
+% References:
+% 
+%  * http://www.luatex.org/svn/trunk/manual/luatexref-t.pdf
+%  * http://www.troubleshooters.com/codecorn/lua/index.htm
+%
+% This makes a 20 x 5 array of math fact prompts for Learn A Fact
+% (LAF) drilling.  
+%
+% The facts are multiplication or division up to 12 x 12.
+ 
+
+\documentclass{article}
+\usepackage{luacode}
+\usepackage{tabularx}
+
+\newcommand{\problem}{%
+   \directlua{
+      a = math.random(1,12)
+      b = math.random(1,12)
+      c = a*b
+      r = math.random()
+      if (r < 0.5) then
+         tex.print("$",a,[[\times]],b,"=$")
+      else
+         tex.print("$",c,[[\div]],a,"=$")
+      end 
+   }
+}
+\usepackage[letterpaper,
+   top=0.5in, bottom=0.5in, left=0.5in, right=0.5in
+]{geometry}
+\renewcommand{\arraystretch}{2}
+\pagestyle{empty}
+
+\begin{document}
+\Large
+
+{\centering
+\begin{tabularx}{\columnwidth}{*{5}{X}}
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\end{tabularx}}
+
+
+\end{document}

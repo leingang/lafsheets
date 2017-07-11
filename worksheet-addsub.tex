@@ -1,0 +1,54 @@
+% !TEX TS-program = LuaLaTeX
+%
+% My first luatex document!
+% 
+% References:
+% 
+%  * http://www.luatex.org/svn/trunk/manual/luatexref-t.pdf
+%  * http://www.troubleshooters.com/codecorn/lua/index.htm
+
+\documentclass{article}
+\usepackage{luacode}
+\usepackage{tabularx}
+
+\newcommand{\addfactrow}[2]{$#1+#2=$}
+\newcommand{\subfactrow}[2]{$#1-#2=$}
+
+\newcommand{\problem}{%
+   \directlua{
+      a = math.random(1,10)
+      b = math.random(1,10)
+      c = a+b
+      r = math.random()
+      if (r < 0.5) then
+         tex.sprint("\addfactrow{" .. a .. "}{" .. b .. "}")
+      else
+         tex.sprint("\subfactrow{" .. a .. "}{" .. b .. "}")
+      end 
+   }
+}
+\usepackage[letterpaper,
+   top=0.5in, bottom=0.5in, left=0.5in, right=0.5in
+]{geometry}
+\renewcommand{\arraystretch}{4}
+\pagestyle{empty}
+
+\begin{document}
+\Large
+
+{\centering
+\begin{tabularx}{\columnwidth}{*{5}{X}}
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\end{tabularx}}
+
+
+\end{document}

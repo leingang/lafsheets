@@ -1,12 +1,13 @@
-% !TEX TS-program = xelatex
+% !TEX TS-program = pdflatex
 %%
-% LAF Grade 1 Gold Seal: Addition and Subtraction up to 20 --- 5min
+% LAF Grade 1 Ribbon: Subtraction up to 10
 %
 %
 
 \documentclass{article}
 \usepackage{ifthen}
-\usepackage{pgf,pgffor}
+\usepackage{pgf}
+\usepackage{pgffor}
 \usepackage{tabularx}
 
 \newcommand{\colfact}[4]{
@@ -24,29 +25,25 @@
 
 
 \newcommand{\problem}{%
-   \pgfmathsetcount{\countc}{21}
-   \whiledo{\the\countc>20}{
+   \pgfmathsetcount{\countc}{11}
+   \whiledo{\the\countc>10}{
       \pgfmathsetcount{\counta}{random(1,10)}
       \pgfmathsetcount{\countb}{random(1,10)}
       \pgfmathsetcount{\countc}{\counta+\countb}
    }
-   \pgfmathtruncatemacro{\coinflip}{random(0,1)}
-   \ifnum\coinflip<1
-      \colfact{+}{\the\counta}{\the\countb}{\the\countc}
-   \else
-      \colfact{-}{\the\countc}{\the\countb}{\the\counta}
-   \fi   
+   \colfact{-}{\the\countc}{\the\counta}{\the\countb}
 }
 
 \newcommand{\maketest}[1][\relax]{
-\large
-LAF Test Grade 1 Gold Seal --- Addition and Subtraction up to 20 --- 5min
+\Large
+LAF Test 1R --- 10min
 \ifx#1\relax\else
   \pgfmathsetseed{#1}
   --- seed #1
 \fi
 
 {\centering\noindent
+\renewcommand{\arraystretch}{3.7}
 \begin{tabularx}{\columnwidth}{*{5}{X}}
 \problem & \problem & \problem & \problem & \problem \\
 \problem & \problem & \problem & \problem & \problem \\
@@ -61,21 +58,17 @@ LAF Test Grade 1 Gold Seal --- Addition and Subtraction up to 20 --- 5min
 \end{tabularx}}
 }
 
-\usepackage{mathspec
-
 
 \usepackage[letterpaper,
    top=0.5in, bottom=0.5in, left=0.5in, right=0.5in
 ]{geometry}
-\renewcommand{\arraystretch}{3.7}
 \pagestyle{empty}
 
-
 \begin{document}
-\foreach \x in {7988,3547,4996,7789,7281,6688,3060,8657,1109,6679}{
-   \maketest[\x]
-   \clearpage
-}
 
+\foreach \x in {7988,3547,4996,7789,7281,6688,3060,8657,1109,6679}{
+\maketest[\x]
+\clearpage
+}
 
 \end{document}

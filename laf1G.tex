@@ -40,11 +40,12 @@
 
 \newcommand{\maketest}[1][\relax]{
 \large
-LAF Test Grade 1 Gold Seal --- Addition and Subtraction up to 20 --- 5min
+LAF Test Grade 1 Lunch — Addition and Subtraction up to 20 — 3min
 \ifx#1\relax\else
   \pgfmathsetseed{#1}
-  --- seed #1
+  — seed #1
 \fi
+\Large
 
 {\centering\noindent
 \begin{tabularx}{\columnwidth}{*{5}{X}}
@@ -61,7 +62,9 @@ LAF Test Grade 1 Gold Seal --- Addition and Subtraction up to 20 --- 5min
 \end{tabularx}}
 }
 
-\usepackage{mathspec
+\usepackage{mathspec}
+\setmainfont{Century Gothic}
+\setmathfont(Digits){Century Gothic}
 
 
 \usepackage[letterpaper,
@@ -72,7 +75,7 @@ LAF Test Grade 1 Gold Seal --- Addition and Subtraction up to 20 --- 5min
 
 
 \begin{document}
-\foreach \x in {7988,3547,4996,7789,7281,6688,3060,8657,1109,6679}{
+\foreach \x in {4302,9616,6530,3281,3886}{
    \maketest[\x]
    \clearpage
 }

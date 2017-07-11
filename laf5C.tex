@@ -1,0 +1,75 @@
+% !TEX TS-program = pdflatex
+%%
+% LAF Grade 5 Certificate: Multiplication up to 12x - 7 min
+%
+%
+
+\documentclass{article}
+\usepackage{ifthen}
+\usepackage{pgf}
+\usepackage{tabularx}
+
+\newboolean{key}
+\setboolean{key}{true}
+\newcommand{\answer}{
+	\ifthenelse{\boolean{key}}{\textcolor{red}}{\phantom}
+}
+\newcommand{\colfact}[4]{
+\renewcommand{\arraystretch}{1}
+   $\begin{array}{rr}
+      & #2 \\
+   #1 & #3 \\\hline
+      & \answer{#4}
+   \end{array}$
+}
+\newcommand{\rowfact}[4]{
+   $#2#1#3=\answer{#4}$
+}
+
+\newcount\counta
+\newcount\countb
+\newcount\countc
+
+
+\newcommand{\problem}{%
+   \pgfmathsetcount{\counta}{random(1,12)}
+   \pgfmathsetcount{\countb}{random(1,12)}
+   \pgfmathsetcount{\countc}{\counta*\countb}
+   \rowfact{\times}{\the\counta}{\the\countb}{\the\countc}
+}
+\usepackage[letterpaper,
+   top=0.5in, bottom=0.5in, left=0.5in, right=0.5in
+]{geometry}
+\renewcommand{\arraystretch}{1.85}
+\pagestyle{empty}
+
+\begin{document}
+\Large
+LAF Test 5C --- 7min
+
+{\centering\noindent
+\begin{tabularx}{\columnwidth}{*{5}{X}}
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\problem & \problem & \problem & \problem & \problem \\
+\end{tabularx}}
+
+
+\end{document}

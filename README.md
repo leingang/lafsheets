@@ -2,10 +2,8 @@
 Learn-A-Fact testing worksheets in LuaLaTeX
 
 These were to help my kids study for their Learn-A-Fact (LAF) tests in 
-school.  There are two flavors:
-
-* `tt_*.tex` sheets are written with `pgfmath` from the PGF package
-* `laf*.tex` sheets are written with LuaLaTeX, with solutions.
+school.  Most of them are written in LaTeX with randomizations done
+by `pgfmath`.  Some of them are done in lua.  
 
 This is not the complete set of LAF sheets.  At some point I had toyed
 with the idea of generating a large set of worksheets, indexed by 
